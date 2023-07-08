@@ -6,6 +6,7 @@ import (
 	"tutorial-restfulapi/controller"
 	"tutorial-restfulapi/exception"
 	"tutorial-restfulapi/helper"
+	"tutorial-restfulapi/middleware"
 	"tutorial-restfulapi/repository"
 	"tutorial-restfulapi/service"
 
@@ -34,7 +35,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:5500",
-		Handler: router,
+		Handler: &middleware.AuthMiddleware{Handler: router},
 	}
 
 	err := server.ListenAndServe()
