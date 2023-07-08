@@ -31,6 +31,8 @@ func (controller *CategoryControllerImpl) Create(w http.ResponseWriter, r *http.
 		Data:   categoryRes,
 	}
 
+	w.WriteHeader(http.StatusCreated)
+
 	helper.WriteToResBody(w, webRes)
 }
 
