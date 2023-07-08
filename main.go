@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"tutorial-restfulapi/app"
 	"tutorial-restfulapi/controller"
+	"tutorial-restfulapi/exception"
 	"tutorial-restfulapi/helper"
 	"tutorial-restfulapi/repository"
 	"tutorial-restfulapi/service"
@@ -28,6 +29,8 @@ func main() {
 	router.POST("/api/categories", categoryController.Create)
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
+
+	router.PanicHandler = exception.ErrHandler
 
 	server := http.Server{
 		Addr:    "localhost:5500",
