@@ -7,7 +7,7 @@ import (
 )
 
 func NewDB() *sql.DB {
-	db, err := sql.Open("mysql", "root:brightshield!23@tcp(localhost:3306)/go-tutorial-restfulapi")
+	db, err := sql.Open("mysql", "root:brightshield!23@tcp(localhost:3306)/go-tutorial-migration")
 	helper.PanicIfError(err)
 
 	db.SetMaxIdleConns(5)
